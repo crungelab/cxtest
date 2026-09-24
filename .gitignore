@@ -71,14 +71,6 @@ docs/_build/
 # Pyenv
 .python-version
 
-# envrc
+# environment
+.env
 .envrc
-
-# CxBuild
-_cxbuild
-_cxinstall
-
-depot
-tmp
-temp
-_build
