@@ -3,15 +3,17 @@ from rich.table import Table
 
 from .console import console
 
+PROJECT_GLOB = "*.prj.yaml"
+
 
 def discover_targets(root: Path) -> list[Path]:
-    targets: set[Path] = set()
-
-    for marker in root.rglob(".cxbind"):
-        if marker.is_dir():
-            targets.add(marker.parent.resolve())
-
-    targets = sorted(targets)
+    targets = sorted(
+        {
+            marker.parent.resolve()
+            for marker in root.rglob(".cxbind")
+            if marker.is_dir() and any(marker.glob(PROJECT_GLOB))
+        }
+    )
 
     table = Table(title="Discovered cxbind targets")
     table.add_column("#")

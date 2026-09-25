@@ -18,7 +18,7 @@ def run(
         False, "--update", "-u", help="Accept current generated output as the new snapshots."
     ),
     pattern: list[str] = typer.Option(
-        ["*_py_auto.cpp"], "--pattern", "-p", help="Glob for generated files to snapshot (repeatable)."
+        ["*_py_auto.cpp", "*.pyi"], "--pattern", "-p", help="Glob for generated files to snapshot (repeatable)."
     ),
     snapshots: bool = typer.Option(
         True, "--snapshots/--no-snapshots", help="Compare generated output against snapshots."
